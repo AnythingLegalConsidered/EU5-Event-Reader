@@ -1,74 +1,91 @@
 # EU5 Event Reader
 
-Monorepo pnpm pour une application React (frontend) et une API Express (backend) partageant des types/utilitaires communs.
+**EU5 Event Reader** est une application web conçue pour explorer, visualiser et comprendre les événements du jeu vidéo *Europa Universalis 5* (Project Caesar).
 
-## Structure
+Dans le jeu, les événements sont souvent imprévisibles et leurs conditions d'apparition ou conséquences exactes peuvent être obscures sans fouiller dans les fichiers de script. Cet outil permet de charger les fichiers du jeu (vanilla ou moddés) pour afficher clairement les chaînes d'événements, leurs conditions, leurs effets et leur contexte historique.
 
+![Aperçu de l'application](https://via.placeholder.com/800x400?text=EU5+Event+Reader+Preview)
+
+## 🚀 Fonctionnalités
+
+- **Exploration par Pays** : Sélectionnez un pays (tag) pour voir tous les événements associés.
+- **Lecture Claire** : Affichage des événements avec titre, description localisée, options et effets.
+- **Chronologie Historique** : Visualisez quand chaque événement est susceptible de se produire historiquement.
+- **Arbre de Dépendances** : Comprenez les liens entre événements (quel événement déclenche le suivant, conditions préalables).
+- **Support Multi-Sources** : Chargez les événements depuis les fichiers du jeu de base ("vanilla") ou depuis vos propres fichiers locaux.
+- **Recherche et Filtres** : Trouvez rapidement un événement par nom, ID ou contenu.
+
+## 🛠️ Architecture Technique
+
+Le projet est structuré comme un monorepo utilisant **pnpm workspaces** :
+
+- **Frontend** (`apps/frontend`) : Application React moderne avec Vite.
+  - Virtualisation des listes pour la performance (react-window).
+  - Visualisation de graphes et timelines.
+  - Gestion d'état optimisée avec caches locaux.
+
+- **Backend** (`apps/backend`) : API Node.js/Express.
+  - Parsing performant des fichiers de script Paradox (.txt) via Worker Threads.
+  - Système de cache persistant (fichier + mémoire) pour des chargements instantanés.
+  - Support de la pagination et de la compression.
+
+- **Shared** (`packages/shared`) : Types et utilitaires partagés entre le front et le back.
+
+## 📦 Installation et Démarrage
+
+### Prérequis
+- Node.js (v18+)
+- pnpm (activé via `corepack enable`)
+
+### Installation
+```bash
+# Cloner le dépôt
+git clone https://github.com/AnythingLegalConsidered/EU5-Event-Reader.git
+cd EU5-Event-Reader
+
+# Installer les dépendances
+corepack pnpm install
 ```
-EU5-Event-Reader/
-├── apps/
-│   ├── frontend/          # React + Vite
-│   └── backend/           # Express + TypeScript
-├── packages/
-│   └── shared/            # Types et utilitaires communs
-├── pnpm-workspace.yaml
-├── package.json
-├── .gitignore
-└── README.md
-```
 
-## Installation
+### Lancer en développement
+Pour lancer à la fois le backend et le frontend :
+
+1. **Backend** (Port 3000)
+   ```bash
+   cd apps/backend
+   corepack pnpm dev
+   ```
+
+2. **Frontend** (Port 5173)
+   ```bash
+   cd apps/frontend
+   corepack pnpm dev
+   ```
+
+Ouvrez ensuite [http://localhost:5173](http://localhost:5173) dans votre navigateur.
+
+## 🧪 Tests
+
+Le projet utilise **Vitest** pour les tests unitaires et d'intégration.
 
 ```bash
-pnpm install
+# Lancer tous les tests
+corepack pnpm test
+
+# Lancer uniquement les tests frontend
+corepack pnpm --filter frontend test
+
+# Lancer uniquement les tests backend
+corepack pnpm --filter backend test
 ```
 
-## Développement
+## 🤝 Contribuer
 
-```bash
-pnpm dev            # lance frontend + backend
-pnpm dev:frontend   # frontend uniquement
-pnpm dev:backend    # backend uniquement
-```
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour proposer des améliorations.
 
-## Build et vérifications
+## 📄 Licence
 
-```bash
-pnpm build          # build récursif
-pnpm type-check     # vérif TS (project refs)
-pnpm lint           # lint TypeScript/React
-```
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## Technologies
-
-- React 19 + Vite 7
-- Node.js + Express
-- TypeScript 5.8
-- pnpm workspaces
-
-## Architecture (mermaid)
-
-```mermaid
-graph TD
-    A[EU5-Event-Reader Root] --> B[apps/]
-    A --> C[packages/]
-    B --> D[frontend/]
-    B --> E[backend/]
-    C --> F[shared/]
-    D --> D1[React + Vite + TypeScript]
-    D --> D2[Port 5173]
-    D --> D3[Proxy API vers :3000]
-    E --> E1[Node.js + Express + TypeScript]
-    E --> E2[Port 3000]
-    E --> E3[Routes API /api/*]
-    F --> F1[Types partagés]
-    F --> F2[Utilitaires communs]
-    F --> F3[Constantes]
-    D -.référence.-> F
-    E -.référence.-> F
-    D1 -->|HTTP Requests| E3
-    style A fill:#e1f5ff
-    style D fill:#61dafb
-    style E fill:#68a063
-    style F fill:#ffd700
-```
+---
+*Note : Ce projet n'est pas affilié à Paradox Interactive.*
