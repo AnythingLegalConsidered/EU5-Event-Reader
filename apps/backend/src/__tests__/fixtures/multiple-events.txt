@@ -1,0 +1,19 @@
+namespace = multi
+
+country_event = {
+  id = 1
+  title = "Event One"
+  desc = "First"
+}
+
+province_event = {
+  id = 2
+  title = "Event Two"
+  desc = "Second"
+}
+
+event = {
+  id = 3
+  title = "Event Three"
+  desc = "Third"
+}

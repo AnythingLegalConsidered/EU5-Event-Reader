@@ -1,0 +1,19 @@
+namespace = flavor_fra
+
+country_event = {
+  id = 1
+  title = flavor_fra.1.title
+  desc = flavor_fra.1.desc
+  trigger = {
+    years_passed = 5
+  }
+  option = {
+    name = flavor_fra.1.option.a
+  }
+}
+
+country_event = {
+  id = 2
+  title = flavor_fra.2.title
+  desc = flavor_fra.2.desc
+}

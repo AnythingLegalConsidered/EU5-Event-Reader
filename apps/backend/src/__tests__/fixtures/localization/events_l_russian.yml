@@ -1,0 +1,4 @@
+l_russian:
+ event.100.title: "Простой заголовок"
+ event.100.desc: "Простое описание"
+ event.100.option.a: "Сделать действие"

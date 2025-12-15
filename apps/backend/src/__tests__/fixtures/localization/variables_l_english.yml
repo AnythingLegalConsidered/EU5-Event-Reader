@@ -1,0 +1,4 @@
+l_english:
+ greeting: "Hello $name$"
+ name: "World"
+ chained: "$greeting$, traveler"

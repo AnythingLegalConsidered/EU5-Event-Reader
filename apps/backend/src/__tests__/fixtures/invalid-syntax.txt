@@ -1,0 +1,8 @@
+country_event = {
+  id = 999
+  title = "Broken"
+  desc = "Missing closing brace"
+  option = {
+    name = broken_option
+  }
+# missing closing braces intentionally

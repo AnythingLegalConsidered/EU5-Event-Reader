@@ -1,0 +1,42 @@
+namespace = complex
+
+country_event = {
+  id = 200
+  title = "Complex Event"
+  desc = "An event with nested triggers"
+  picture = some_picture
+  trigger = {
+    AND = {
+      has_dlc = leviathan
+      OR = {
+        stability > 0
+        prestige > 50
+      }
+    }
+  }
+  immediate = {
+    add_stability = 1
+  }
+  option = {
+    name = option_a
+    ai_chance = 75
+    trigger = { NOT = { war = yes } }
+    effect = {
+      add_prestige = 10
+    }
+  }
+  option = {
+    name = option_b
+    ai_chance = 25
+    effect = {
+      add_war_exhaustion = -2
+    }
+  }
+  is_triggered_only = yes
+  fire_only_once = no
+  mean_time_to_happen = {
+    months = 12
+  }
+  hidden = no
+  major = yes
+}

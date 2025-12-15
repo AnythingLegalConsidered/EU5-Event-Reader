@@ -1,0 +1,25 @@
+{
+  "name": "eu5-event-reader",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @eu5-reader/frontend dev\" \"pnpm --filter @eu5-reader/backend dev\"",
+    "dev:frontend": "pnpm --filter @eu5-reader/frontend dev",
+    "dev:backend": "pnpm --filter @eu5-reader/backend dev",
+    "build": "pnpm -r build",
+    "type-check": "tsc --build",
+    "lint": "eslint . --ext .ts,.tsx",
+    "clean": "pnpm -r exec rm -rf dist node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "prettier": "^3.3.3",
+    "typescript": "~5.8.0"
+  }
+}

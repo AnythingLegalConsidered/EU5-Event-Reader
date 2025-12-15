@@ -1,0 +1,11 @@
+namespace = test
+
+country_event = {
+  id = 100
+  title = "Simple Event"
+  desc = "A simple test event"
+  option = {
+    name = simple_option
+    desc = "Do it"
+  }
+}

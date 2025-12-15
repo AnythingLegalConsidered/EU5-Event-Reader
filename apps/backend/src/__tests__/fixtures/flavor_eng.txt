@@ -1,0 +1,14 @@
+namespace = flavor_eng
+
+country_event = {
+  id = 10
+  title = flavor_eng.10.title
+  desc = flavor_eng.10.desc
+  trigger = {
+    has_country_flag = eng_ready
+  }
+  option = {
+    name = flavor_eng.10.option.a
+    trigger = { has_fired_event = flavor_fra.1 }
+  }
+}

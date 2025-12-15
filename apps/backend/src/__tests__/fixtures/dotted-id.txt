@@ -1,0 +1,11 @@
+namespace = dotted
+
+country_event = {
+  id = flavor_tur.1
+  title = "Dotted Id Event"
+  desc = "Event with dotted id"
+  option = {
+    id = opt.1
+    name = dotted_option
+  }
+}

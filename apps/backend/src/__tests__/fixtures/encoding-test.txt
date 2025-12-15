@@ -1,0 +1,6 @@
+country_event = {
+  id = 555
+  title = "Événement Spécial"
+  desc = "Café crème"
+  option = { name = enc_test }
+}
