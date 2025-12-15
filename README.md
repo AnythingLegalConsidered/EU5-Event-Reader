@@ -1,54 +1,54 @@
 # EU5 Event Reader
 
-**EU5 Event Reader** est une application web conçue pour explorer, visualiser et comprendre les événements du jeu vidéo *Europa Universalis 5* (Project Caesar).
+**EU5 Event Reader** is a web application designed to explore, visualize, and understand events in the video game *Europa Universalis 5* (Project Caesar).
 
-Dans le jeu, les événements sont souvent imprévisibles et leurs conditions d'apparition ou conséquences exactes peuvent être obscures sans fouiller dans les fichiers de script. Cet outil permet de charger les fichiers du jeu (vanilla ou moddés) pour afficher clairement les chaînes d'événements, leurs conditions, leurs effets et leur contexte historique.
+In the game, events are often unpredictable, and their exact trigger conditions or consequences can be obscure without digging into script files. This tool allows you to load game files (vanilla or modded) to clearly display event chains, their conditions, effects, and historical context.
 
-![Aperçu de l'application](https://via.placeholder.com/800x400?text=EU5+Event+Reader+Preview)
+![Application Preview](https://via.placeholder.com/800x400?text=EU5+Event+Reader+Preview)
 
-## 🚀 Fonctionnalités
+## 🚀 Features
 
-- **Exploration par Pays** : Sélectionnez un pays (tag) pour voir tous les événements associés.
-- **Lecture Claire** : Affichage des événements avec titre, description localisée, options et effets.
-- **Chronologie Historique** : Visualisez quand chaque événement est susceptible de se produire historiquement.
-- **Arbre de Dépendances** : Comprenez les liens entre événements (quel événement déclenche le suivant, conditions préalables).
-- **Support Multi-Sources** : Chargez les événements depuis les fichiers du jeu de base ("vanilla") ou depuis vos propres fichiers locaux.
-- **Recherche et Filtres** : Trouvez rapidement un événement par nom, ID ou contenu.
+- **Country Exploration**: Select a country (tag) to view all associated events.
+- **Clear Reading**: Display events with title, localized description, options, and effects.
+- **Historical Timeline**: Visualize when each event is historically likely to occur.
+- **Dependency Tree**: Understand links between events (which event triggers the next, prerequisites).
+- **Multi-Source Support**: Load events from base game files ("vanilla") or your own local files.
+- **Search and Filters**: Quickly find an event by name, ID, or content.
 
-## 🛠️ Architecture Technique
+## 🛠️ Technical Architecture
 
-Le projet est structuré comme un monorepo utilisant **pnpm workspaces** :
+The project is structured as a monorepo using **pnpm workspaces**:
 
-- **Frontend** (`apps/frontend`) : Application React moderne avec Vite.
-  - Virtualisation des listes pour la performance (react-window).
-  - Visualisation de graphes et timelines.
-  - Gestion d'état optimisée avec caches locaux.
+- **Frontend** (`apps/frontend`): Modern React application with Vite.
+  - List virtualization for performance (react-window).
+  - Graph and timeline visualization.
+  - Optimized state management with local caches.
 
-- **Backend** (`apps/backend`) : API Node.js/Express.
-  - Parsing performant des fichiers de script Paradox (.txt) via Worker Threads.
-  - Système de cache persistant (fichier + mémoire) pour des chargements instantanés.
-  - Support de la pagination et de la compression.
+- **Backend** (`apps/backend`): Node.js/Express API.
+  - High-performance parsing of Paradox script files (.txt) via Worker Threads.
+  - Persistent cache system (file + memory) for instant loads.
+  - Support for pagination and compression.
 
-- **Shared** (`packages/shared`) : Types et utilitaires partagés entre le front et le back.
+- **Shared** (`packages/shared`): Types and utilities shared between frontend and backend.
 
-## 📦 Installation et Démarrage
+## 📦 Installation and Startup
 
-### Prérequis
+### Prerequisites
 - Node.js (v18+)
-- pnpm (activé via `corepack enable`)
+- pnpm (enabled via `corepack enable`)
 
 ### Installation
 ```bash
-# Cloner le dépôt
+# Clone the repository
 git clone https://github.com/AnythingLegalConsidered/EU5-Event-Reader.git
 cd EU5-Event-Reader
 
-# Installer les dépendances
+# Install dependencies
 corepack pnpm install
 ```
 
-### Lancer en développement
-Pour lancer à la fois le backend et le frontend :
+### Run in Development
+To run both backend and frontend:
 
 1. **Backend** (Port 3000)
    ```bash
@@ -62,30 +62,30 @@ Pour lancer à la fois le backend et le frontend :
    corepack pnpm dev
    ```
 
-Ouvrez ensuite [http://localhost:5173](http://localhost:5173) dans votre navigateur.
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 🧪 Tests
 
-Le projet utilise **Vitest** pour les tests unitaires et d'intégration.
+The project uses **Vitest** for unit and integration tests.
 
 ```bash
-# Lancer tous les tests
+# Run all tests
 corepack pnpm test
 
-# Lancer uniquement les tests frontend
+# Run only frontend tests
 corepack pnpm --filter frontend test
 
-# Lancer uniquement les tests backend
+# Run only backend tests
 corepack pnpm --filter backend test
 ```
 
-## 🤝 Contribuer
+## 🤝 Contributing
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour proposer des améliorations.
+Contributions are welcome! Feel free to open an issue or pull request to propose improvements.
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-*Note : Ce projet n'est pas affilié à Paradox Interactive.*
+*Note: This project is not affiliated with Paradox Interactive.*
